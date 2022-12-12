@@ -4,8 +4,16 @@ Backend API для социальной сети.
 
 ## Для просмотра проекта:
 
-Создать venv
+Клонировать репозиторий
+```
+git clone https://github.com/spltxt/fastapi_practice.git
+```
+(Опционально) Создать и активировать виртуальное окружение
+```
+python -m venv venv
 
+venv\Scripts\activate
+```
 Установить зависимости
 ```
 pip install -r requirements.txt
