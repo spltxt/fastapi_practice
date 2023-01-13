@@ -31,27 +31,32 @@ http://127.0.0.1:8000/docs
 <b>Функционал:</b>
 
 - Аутентификация: создание пользователя, хэширование пароля, получение токена, авторизация.
-- Создание и удаление постов.
-- Загрузка изображений.
+- Создание, удаление и редактирование постов.
+- Возможность лайкать посты.
 - Создание и удаление комментариев.
 
 Пример ответа на запрос о получении всех публикаций:
 ```
 [
   {
-    "id": 1,
+    "id": 0,
     "image_url": "string",
-    "image_url_type": "absolute",
-    "caption": "test_caption",
-    "timestamp": "2022-12-12T16:57:09.193Z",
+    "image_url_type": "string",
+    "caption": "string",
+    "timestamp": "2023-01-13T01:36:50.006Z",
     "user": {
-      "username": "testUser"
+      "username": "string"
     },
     "comments": [
       {
-        "text": "test comment",
-        "username": "testUser",
-        "timestamp": "2022-12-12T16:57:20.193Z"
+        "text": "string",
+        "username": "string",
+        "timestamp": "2023-01-13T01:36:50.006Z"
+      }
+    ],
+    "likes": [
+      {
+        "username": "string"
       }
     ]
   }

@@ -1,6 +1,6 @@
 from sqlalchemy.sql.schema import ForeignKey
 from db.database import Base
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 
@@ -23,6 +23,7 @@ class DbPost(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship('DbUser', back_populates='items')
     comments = relationship('DbComment', back_populates='post')
+    likes = relationship('DbLike', back_populates='post')
 
 
 class DbComment(Base):
@@ -33,3 +34,16 @@ class DbComment(Base):
     timestamp = Column(DateTime)
     post_id = Column(Integer, ForeignKey('post.id'))
     post = relationship("DbPost", back_populates="comments")
+
+
+class DbLike(Base):
+    __tablename__ = 'like'
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String)
+    post_id = Column(Integer, ForeignKey('post.id'))
+    user_id = Column(Integer, ForeignKey('user.id'))
+    post = relationship('DbPost', back_populates='likes')
+    __table_args__ = (
+        UniqueConstraint(post_id, user_id),
+    )
+
